@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augustine</title>
+    <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+    <header class="page_header">
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="index.html">Home</a>
+			<a href="#projects">Projects</a>
+			<a href="blog.html">Blog</a>
+			<a href="contact.html">Let's Connect</a>
+		  </div>
+		  <span style="font-size:15px;cursor:pointer;color:white;position:fixed; right:0px;" onclick="openNav()">MENU &#9776;</span>
+        <div class="sidemen">
+        <img src="assets/images/sidemen.png" alt="Descriptive text for sidemen image">
+        </div>
+        <div class="header_text">
+            <h1>Augustine Joseph</h1>
+            <p>Hardware Design Engineer</p>
+        </div>
+    </header>
+    <div class="blog_post" id="projects">
+        <div class="container_copy">
+            <!--<h3>12 January 2019</h3>-->
+            <h1>Adlux Connect: Intelligent Healthcare Assistance Chatbot</h1>
+            <p>An AI-powered hospital chatbot built with the Ollama 3.2 LLM model and Retrieval-Augmented Generation (RAG) to deliver accurate, secure, and context-aware responses. Designed to streamline communication in healthcare settings by providing instant access to health information, medical advice, appointment scheduling, and more.</p>
+            <a class="btn_primary" href='https://github.com/augustine-aj/Adlux-Connect' target="_blank">GitHub Repoasitory</a>
+        </div>
+        <div class="container_copy">
+            <!--<h3>12 January 2019</h3>-->
+            <h1>SentimentSpectrum: Real-Time Sentiment Analysis for eCommerce websites</h1>
+            <p>SentimentSpectrum is a web application designed by usiing Flask framework to predict customer sentiment for eCommerce websites like Flipkart using a BERT-based pre-trained model. This application offers real-time sentiment analysis with labels such as Positive, Negative, and Neutral, providing valuable insights into customer feedback. The project is built using the Flask framework and integrates various tools for data collection, processing, visualization, and machine learning, making it ideal for applications in data science, machine learning (ML), and artificial intelligence (AI).</p>
+            <a class="btn_primary" href='https://github.com/augustine-aj/SentimentSpectrum' target="_blank">GitHub Repoasitory</a>
+        </div>
+        <div class="container_copy">
+            <!--<h3>12 January 2019</h3>-->
+            <h1>AuraTunes: AI-Powered Mood-Based Music Clustering and Recommendation</h1>
+            <p>Developed a web-based machine learning model to recommend music tracks clustered by mood using audio features, enabling personalized playlists and enhanced user experiences. The goal of this project is to develop a machine learning model that clusters music tracks based on their mood using key audio features. This enables personalized music recommendations and playlists for users, enhancing their listening experience. This project uses unsupervised learning to cluster songs based on their attributes, providing insight into how various musical qualities like energy, danceability, and valence relate to different moods.</p>
+            <a class="btn_primary" href='https://github.com/augustine-aj/Mood-Based-Song-Clustering' target="_blank">GitHub Repoasitory</a>
+        </div>
+    </div>
+    
+<script>
+	function openNav() {
+	  document.getElementById("mySidenav").style.width = "250px";
+	}
+	
+	function closeNav() {
+	  document.getElementById("mySidenav").style.width = "0";
+	}
+	</script>
+</body>
+</html>
