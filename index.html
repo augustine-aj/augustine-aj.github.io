@@ -3,135 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Generator</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <title>Augustine-aj</title>
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Font Awesome -->
 </head>
 <body>
-
-    <div class="container-wrapper">
-        <div class="container input-side">
-            <h1>🧾 Flavours FoodStuff Invoice Generator</h1>
-            <p>Enter the details below and click "Generate PDF".</p>
-
-            <div id="invoice-form" class="input-section">
-                <h2>Invoice Details</h2>
-
-                <div class="header-details">
-                    <div class="column">
-                        <h3>Seller Details (FLAVOURS FOODSTUFF TRADING LLC)</h3>
-                        <label for="seller-trn">TRN:</label>
-                        <input type="text" id="seller-trn" value="100588993400003">
-                    </div>
-                    <div class="column">
-                        <h3>Customer Details (SIP AND DINE RESTAURANT)</h3>
-                        <label for="customer-name">Name:</label>
-                        <input type="text" id="customer-name" value="SIP AND DINE RESTAURANT AND CAFETERIA">
-                        <label for="customer-trn">Tax Regn No:</label>
-                        <input type="text" id="customer-trn" value="1049944013100003">
-                    </div>
-                </div>
-
-                <div class="invoice-meta-details">
-                    <label for="invoice-no">Invoice No:</label>
-                    <input type="text" id="invoice-no" value="5037">
-                    <label for="invoice-date">Date:</label>
-                    <input type="date" id="invoice-date" value="2025-12-06">
-                </div>
-
-                <h3>Itemized List</h3>
-                <table id="input-items-table">
-                    <thead>
-                        <tr>
-                            <th>ITEM DESCRIPTION</th>
-                            <th>QTY</th>
-                            <th>RATE (AED)</th>
-                            <th>Net Total (Excl. VAT)</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        </tbody>
-                </table>
-                <button id="add-item-btn">➕ Add Item</button>
-
-                <div class="totals-display">
-                    <p>Subtotal (Excl. VAT): <span id="input-subtotal">0.00</span> AED</p>
-                    <p>VAT (5%): <span id="input-vat">0.00</span> AED</p>
-                    <p>TOTAL (Incl. VAT): <span id="input-total">0.00</span> AED</p>
-                </div>
-
-                <button id="generate-pdf-btn">⬇️ Generate Invoice PDF</button>
-
-            </div>
+    <header class="page_header">
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="#">Home</a>
+			<a href="#projects">Projects</a>
+			<a href="https://augustine-aj.github.io/blogs/">Blog</a>
+			<a href="#contacts">Let's Connect</a>
+		  </div>
+		  <span style="font-size:15px;cursor:pointer;color:white;position:fixed; right:40px;top:20px;" onclick="openNav()">MENU &#9776;</span>
+        <div class="sidemen">
+        <img src="assets/images/sidemen.png" alt="Descriptive text for sidemen image">
         </div>
-
-        <div class="container preview-side">
-            <h2>Live PDF Preview (A4 Size)</h2>
-            <div id="invoice-preview">
-                <div id="invoice-template">
-                    <header>
-                        <div class="seller-info">
-                            <p class="company-name">FLAVOURS FOODSTUFF TRADING LLC</p>
-                            <p>International city dubai, UAE, Po box 78416</p>
-                            <p>TRN: <span id="pdf-seller-trn">100588993400003</span></p>
-                            <p>Mobile: +971 56 622 1665</p>
-                        </div>
-                        <div class="invoice-meta">
-                            <h1>TAX INVOICE</h1>
-                            <p>Date: <span id="pdf-date">06-12-25</span></p>
-                            <p>Invoice No: <span id="pdf-invoice-no">5037</span></p>
-                        </div>
-                    </header>
-
-                    <div class="customer-info">
-                        <h2>CUSTOMER</h2>
-                        <p class="customer-name"><span id="pdf-customer-name">SIP AND DINE RESTAURANT AND CAFETERIA</span></p>
-                        <p>AL QUSAIS, DUBAI, UAE</p>
-                        <p>TAX REGN NO: <span id="pdf-customer-trn">1049944013100003</span></p>
-                    </div>
-
-                    <table class="item-table">
-                        <thead>
-                            <tr>
-                                <th>NO</th>
-                                <th>ITEM DESCRIPTION</th>
-                                <th>QTY</th>
-                                <th>RATE</th>
-                                <th>Net Total Excluding VAT</th>
-                            </tr>
-                        </thead>
-                        <tbody id="pdf-item-rows">
-                            </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="4" class="total-label">TOTAL EXCUDING VAT</td>
-                                <td id="pdf-subtotal" class="total-value">0.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="total-label">TOTAL VAT AMOUNT @5%</td>
-                                <td id="pdf-vat" class="total-value">0.00</td>
-                            </tr>
-                            <tr class="final-total-row">
-                                <td colspan="4" class="total-label">TOTAL WITH VAT AFTER NET DISCOUNT</td>
-                                <td id="pdf-total" class="total-value">0.00</td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    
-                    <div class="footer">
-                        <p>RESH</p>
-                        <p>FRUITS & VEGETABLES</p>
-                        <p class="signature-line">RECEIVER- SIGN</p>
-                    </div>
-                </div>
-            </div>
+        <div class="header_text">
+            <h1>Augustine Joseph</h1>
+            <p>Hardware Design Engineer | Python Developer | Data Scientist</p>
         </div>
+    </header>
+    <div class="blog_post" id="projects">
+      <div class="container_copy">
+        <!--<h3>12 January 2019</h3>-->
+        <h1>Adlux Connect: Intelligent Healthcare Assistance Chatbot</h1>
+        <p>An AI-powered hospital chatbot built with the Ollama 3.2 LLM model and Retrieval-Augmented Generation (RAG) to deliver accurate, secure, and context-aware responses. Designed to streamline communication in healthcare settings by providing instant access to health information, medical advice, appointment scheduling, and more.</p>
+        <a class="btn_primary" href='https://github.com/augustine-aj/Adlux-Connect' target="_blank">GitHub Repository</a>
+      </div>
+      <div class="container_copy">
+        <!--<h3>12 January 2019</h3>-->
+        <h1>SentimentSpectrum: Real-Time Sentiment Analysis for eCommerce websites</h1>
+        <p>SentimentSpectrum is a web application designed by usiing Flask framework to predict customer sentiment for eCommerce websites like Flipkart using a BERT-based pre-trained model. This application offers real-time sentiment analysis with labels such as Positive, Negative, and Neutral, providing valuable insights into customer feedback. The project is built using the Flask framework and integrates various tools for data collection, processing, visualization, and machine learning, making it ideal for applications in data science, machine learning (ML), and artificial intelligence (AI).</p>
+        <a class="btn_primary" href='https://github.com/augustine-aj/SentimentSpectrum' target="_blank">GitHub Repository</a>
+      </div>
+      <div class="container_copy">
+        <!--<h3>12 January 2019</h3>-->
+        <h1>AuraTunes: AI-Powered Mood-Based Music Clustering and Recommendation</h1>
+        <p>Developed a web-based machine learning model to recommend music tracks clustered by mood using audio features, enabling personalized playlists and enhanced user experiences. The goal of this project is to develop a machine learning model that clusters music tracks based on their mood using key audio features. This enables personalized music recommendations and playlists for users, enhancing their listening experience. This project uses unsupervised learning to cluster songs based on their attributes, providing insight into how various musical qualities like energy, danceability, and valence relate to different moods.</p>
+        <a class="btn_primary" href='https://github.com/augustine-aj/Mood-Based-Song-Clustering' target="_blank">GitHub Repository</a>
+      </div>
     </div>
-    
-    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
 
-</body>
+<div class='blog-posts-wrap' id="blogs">
+<a class='post-link' href='https://augustine-aj.github.io/blogs/articles/SentimentSpectrum%20blog/SentimentSpectrum_blog.html'>
+    <div class='post-wrap'>
+
+      <div class='post-image' style='background-image: url("https://augustine-aj.github.io/blogs/articles/SentimentSpectrum%20blog/images/sentimentspectrum_header_image.png")'>
+      </div>
+
+      <div class='post-body'>
+
+          <div class='post-title'>
+            <h2>SentimentSpectrum: Live Review Sentiment Monitoring and Analysis System</h2>
+          </div>
+
+          <div class='post-text'>
+            <p>A few months ago, I developed a web application called SentimentSpectrum using the Flask framework. This project aimed to predict customer sentiment for eCommerce websites like Flipkart</p>
+          </div>
+
+
+      </div>
+
+    </div>
+</a>
+  <a class='post-link' href='https://augustine-aj.github.io/blogs/articles/15_open_source_github_jan16/15-open-source-github-jan16.html'>
+    <div class='post-wrap'>
+
+      <div class='post-image' style='background-image: url("https://augustine-aj.github.io/blogs/articles/15_open_source_github_jan16/images/saas_tools.png")'>
+      </div>
+
+      <div class='post-body'>
+
+          <div class='post-title'>
+            <h2>15 Open-Source Projects to Replace Popular SaaS Tools & Apps</h2>
+          </div>
+
+          <div class='post-text'>
+            <p>In today’s fast-evolving digital landscape, businesses and individuals rely heavily on proprietary SaaS tools for essential tasks like website creation, data management, and email marketing. Solutions like</p>
+          </div>
+
+      </div>
+
+    </div>
+  </a>
+	<a class='post-link' href='https://augustine-aj.github.io/blogs/articles/Basic%20to%20advanced%20rag/basic_to_advanced_rag.html'>
+    <div class='post-wrap'>
+
+      <div class='post-image' style='background-image: url("https://augustine-aj.github.io/blogs/articles/Basic%20to%20advanced%20rag/images/basic_rag.webp")'>
+      </div>
+
+      <div class='post-body'>
+        
+
+          <div class='post-title'>
+            <h2>From Basic to Advanced RAG: Every Step of the Way</h2>
+          </div>
+
+          <div class='post-text'>
+            <p>
+		RAG, or Retrieval Augmented Generation, provides LLMs with the ability to retrieve information from one or multiple data sources and use that information to answer user queries. Setting up a basic RAG system is relatively straightforward;	    
+	    </p>
+        </div>
+
+      </div>
+
+    </div>
+  </a>
+</div>
+<div class='button-wrap'>
+  <a class='button' href='https://augustine-aj.github.io/blogs/'>Read More</a>
+</div>
+  <div class="social-icons">
+      <a href="https://www.linkedin.com/in/augustine-aj" target="_blank" class="social-icon linkedin-icon"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/augustine-aj" target="_blank" class="social-icon github-icon"><i class="fa-brands fa-github"></i></a>
+      <a href="mailto:augustine04849@gmail.com" target="_blank" class="social-icon email-icon"><i class="fa-sharp fa-regular fa-envelope"></i></a>
+      <a href="https://wa.me/+918592021959" target="_blank" class="social-icon whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></a>
+  </div>
+</footer>
+<script>
+	function openNav() {
+	  document.getElementById("mySidenav").style.width = "250px";
+	}
+	
+	function closeNav() {
+	  document.getElementById("mySidenav").style.width = "0";
+	}
+	</script>
+ </body>
 </html>
+
+
