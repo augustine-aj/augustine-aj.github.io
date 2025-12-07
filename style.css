@@ -1,1 +1,426 @@
+/*
+================================================================
+1. General Styling for the Web Page (User Friendly Form)
+================================================================
+*/
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #28a745;
+    --danger-color: #dc3545;
+    --light-bg: #f8f9fa;
+    --border-color: #ced4da;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: #333;
+    margin: 0;
+    padding: 30px 20px;
+}
+
+/* New Wrapper for Side-by-Side Layout */
+.container-wrapper {
+    display: flex;
+    gap: 30px;
+    max-width: 1400px; /* Wider max width to accommodate both columns */
+    margin: 0 auto;
+}
+
+.container {
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.input-side {
+    flex: 1; /* Takes up one part of the space */
+    min-width: 550px;
+}
+
+.preview-side {
+    flex: 1; /* Takes up one part of the space */
+    min-width: 550px;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.preview-side h2 {
+    text-align: center;
+    color: #495057;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+h1 {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: 2em;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #6c757d;
+}
+
+/* --- Input Form Section --- */
+.input-section {
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.input-section h2 {
+    font-size: 1.5em;
+    color: #495057;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.header-details {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.header-details .column {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    background-color: var(--light-bg);
+}
+
+.header-details h3 {
+    margin-top: 0;
+    color: #000;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.invoice-meta-details {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border-color);
+    margin-bottom: 20px;
+}
+
+.invoice-meta-details label {
+    flex-basis: 100px;
+    font-weight: 600;
+    color: #495057;
+}
+
+input[type="text"], 
+input[type="number"], 
+input[type="date"] {
+    flex-grow: 1;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+label {
+    font-weight: normal;
+    display: block;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+#generate-pdf-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 1.2em;
+    padding: 15px;
+}
+
+#generate-pdf-btn:hover {
+    background-color: #218838;
+}
+
+#add-item-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    margin-top: 15px;
+}
+
+#add-item-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+#input-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#input-items-table thead th {
+    background-color: var(--light-bg);
+    color: #333;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-color);
+    text-align: center;
+}
+
+#input-items-table th, #input-items-table td {
+    padding: 10px;
+    border: 1px solid #eee;
+    text-align: left;
+}
+
+#input-items-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+#input-items-table input {
+    margin: 0;
+    padding: 5px;
+    border: none;
+    background: transparent;
+    width: 95%;
+}
+
+.totals-display {
+    margin-top: 25px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background-color: #fafafa;
+    text-align: right;
+    width: 40%;
+    float: right;
+}
+
+.totals-display p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    text-align: right;
+}
+
+.totals-display span {
+    font-weight: bold;
+    color: var(--danger-color);
+    display: inline-block;
+    min-width: 80px;
+}
+
+.input-section::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*
+================================================================
+2. INVOICE TEMPLATE STYLING (Live Preview)
+================================================================
+*/
+
+#invoice-preview {
+    /* Define the A4 aspect ratio for the preview container */
+    width: 100%;
+    max-width: 550px; /* Constrain the width */
+    margin: 0 auto;
+    border: 1px solid #aaa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Important for clean look */
+    background: #fff;
+}
+
+#invoice-template {
+    /* CRITICAL CHANGE: Now always visible for preview */
+    display: block; 
+    width: 100%; 
+    padding: 20px; /* Reduced padding for compact view */
+    background: #fff;
+    font-size: 8pt; /* Reduced font size for compact view */
+    font-family: 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    /* Resetting the fixed A4 width */
+    max-width: none; 
+}
+
+
+/* Header & Meta */
+#invoice-template header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px; 
+    border-bottom: 1px solid #333;
+    padding-bottom: 0px; 
+}
+
+.seller-info {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.seller-info p, .invoice-meta p {
+    margin: 1px 0; 
+    line-height: 1.1; 
+    text-align: left; 
+}
+
+.invoice-meta h1 {
+    font-size: 12pt; 
+    color: #333;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+/* Customer Info */
+.customer-info {
+    margin-bottom: 5px; 
+    border: 1px solid #333;
+    padding: 2px; 
+}
+
+.customer-info h2 {
+    font-size: 9pt;
+    text-align: left;
+    margin-bottom: 5px;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.customer-info p {
+    text-align: left;
+    margin-bottom: 0px;
+    color: #000000;
+
+}
+
+/* Item Table - CRITICAL COLUMN WIDTH FIXES */
+.item-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px; 
+    table-layout: fixed; /* Ensures column widths are respected */
+}
+
+.item-table th, .item-table td {
+    border: 1px solid #333;
+    padding: 4px 6px; 
+    text-align: left;
+    font-size: 7pt; 
+}
+
+.item-table th {
+    background-color: #eee;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Enforcing strict column widths to match PDF layout */
+.item-table th:nth-child(1), .item-table td:nth-child(1) { width: 5%; text-align: center; } /* NO */
+.item-table th:nth-child(2), .item-table td:nth-child(2) { width: 45%; } /* ITEM DESCRIPTION */
+.item-table th:nth-child(3), .item-table td:nth-child(3) { width: 10%; text-align: center; } /* QTY */
+.item-table th:nth-child(4), .item-table td:nth-child(4) { width: 20%; text-align: right; } /* RATE */
+.item-table th:nth-child(5), .item-table td:nth-child(5) { width: 20%; text-align: right; font-weight: bold; } /* Net Total */
+
+/* Totals Footer */
+.item-table tfoot td {
+    border: none;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    border-top: 1px solid #333;
+    padding: 3px 6px; 
+    font-size: 7pt;
+}
+
+.item-table tfoot tr:last-child td {
+    border-bottom: 1px solid #333;
+}
+
+.total-label {
+    text-align: right;
+    font-weight: bold;
+    background-color: #f7f7f7;
+}
+
+.final-total-row td {
+    background-color: #eee;
+    font-size: 8pt; 
+}
+
+/* Footer Section */
+.footer {
+    margin-top: 20px; 
+    text-align: left;
+    font-size: 7pt; 
+}
+
+.footer .signature-line {
+    margin-top: 15px; 
+    padding-top: 3px;
+    border-top: 1px solid #333;
+    width: 100px; 
+}
+
+@media (max-width: 1200px) {
+    .container-wrapper {
+        flex-direction: column;
+    }
+
+    .input-side, .preview-side {
+        min-width: unset;
+        max-width: 100%;
+    }
+}
