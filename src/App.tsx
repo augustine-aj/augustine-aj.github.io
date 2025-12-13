@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Landing } from './pages/Landing';
-import { InvoiceGenerator } from './pages/InvoiceGenerator';
+// import { InvoiceGenerator } from './pages/InvoiceGenerator';
 
 function App() {
   return (
