@@ -7,7 +7,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/invoice" element={<InvoiceGenerator />} />
+        {/* DEBUG: Invoice route temporarily disabled */}
+        {/* <Route path="/invoice" element={<InvoiceGenerator />} /> */}
       </Routes>
     </Router>
   );
