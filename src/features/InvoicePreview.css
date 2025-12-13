@@ -1,0 +1,181 @@
+/*
+================================================================
+INVOICE TEMPLATE STYLING (Derived from User Reference)
+================================================================
+*/
+
+#invoice-preview {
+    font-family: 'Times New Roman', Times, serif;
+    background: #fff;
+    width: 100%;
+    /* We let the container control the max-width context if needed, 
+       but the internal content should be fluid or fixed A4 ratio. */
+}
+
+#invoice-template {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    font-size: 10pt;
+    /* Default print size */
+    box-sizing: border-box;
+    color: #000;
+}
+
+/* Header & Meta */
+#invoice-template header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0px;
+}
+
+.seller-info {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.seller-info p,
+.invoice-meta p {
+    margin: 1px 0;
+    line-height: 1.1;
+    text-align: left;
+}
+
+.invoice-meta h1 {
+    font-size: 12pt;
+    color: #333;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Customer Info */
+.customer-info {
+    margin-bottom: 5px;
+    border: 1px solid #333;
+    padding: 2px;
+}
+
+.customer-info h2 {
+    font-size: 9pt;
+    text-align: left;
+    margin-bottom: 5px;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.customer-info p {
+    text-align: left;
+    margin-bottom: 0px;
+    color: #000000;
+    margin-top: 0;
+}
+
+/* Item Table - CRITICAL COLUMN WIDTH FIXES */
+.item-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    table-layout: fixed;
+    /* Ensures column widths are respected */
+}
+
+.item-table th,
+.item-table td {
+    border: 1px solid #333;
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 8pt;
+}
+
+.item-table th {
+    background-color: #eee;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Enforcing strict column widths to match PDF layout */
+.item-table th:nth-child(1),
+.item-table td:nth-child(1) {
+    width: 5%;
+    text-align: center;
+}
+
+/* NO */
+.item-table th:nth-child(2),
+.item-table td:nth-child(2) {
+    width: 45%;
+}
+
+/* ITEM DESCRIPTION */
+.item-table th:nth-child(3),
+.item-table td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+
+/* QTY */
+.item-table th:nth-child(4),
+.item-table td:nth-child(4) {
+    width: 20%;
+    text-align: right;
+}
+
+/* RATE */
+.item-table th:nth-child(5),
+.item-table td:nth-child(5) {
+    width: 20%;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Net Total */
+
+/* Totals Footer */
+.item-table tfoot td {
+    border: none;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    border-top: 1px solid #333;
+    padding: 3px 6px;
+    font-size: 8pt;
+}
+
+.item-table tfoot tr:last-child td {
+    border-bottom: 1px solid #333;
+}
+
+.total-label {
+    text-align: right;
+    font-weight: bold;
+    background-color: #f7f7f7;
+}
+
+.final-total-row td {
+    background-color: #eee;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+/* Footer Section */
+.footer {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 8pt;
+}
+
+.footer .signature-line {
+    margin-top: 30px;
+    padding-top: 3px;
+    border-top: 1px solid #333;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+}
