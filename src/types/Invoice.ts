@@ -39,7 +39,7 @@ export const initialInvoiceData: InvoiceData = {
     invoiceNo: '5039', // From sample
     date: new Date().toISOString().split('T')[0],
     company: {
-        name: 'FLAVOURS FOODSTUFF TRADING LLC',
+        name: 'AUGUSTINE TRADING LLC',
         addressLine1: 'International city dubai, UAE, Po box 78416',
         addressLine2: 'TRN: 100588993400003',
         mobile: '+971 56 622 1665'
@@ -62,4 +62,5 @@ export const initialInvoiceData: InvoiceData = {
     vatRate: 0.05,
     isDraft: true
 };
+
 
